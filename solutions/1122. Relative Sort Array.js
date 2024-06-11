@@ -32,7 +32,7 @@ var relativeSortArray = function(arr1, arr2) {
     }
 
     unsortedArr.sort((a, b) => a - b);
-    Array.prototype.push.apply(sortedArr, unsortedArr);
+    sortedArr = sortedArr.concat(unsortedArr);
     return sortedArr;
 };
 
