@@ -3,7 +3,20 @@
  * @param {number[]} arr2
  * @return {number[]}
  */
-var relativeSortArray = function(arr1, arr2) {
+
+var relativeSortArray = function(arr1, arr2, result = []) {
+    for (let num of arr2) {
+        while (arr1.includes(num)) {
+            result.push(num);
+            arr1.splice(arr1.indexOf(num), 1);
+        }
+    }
+    
+    arr1.sort((a, b) => a - b);
+    return result.concat(arr1);
+}
+
+/*var relativeSortArray = function(arr1, arr2) {
     let sortedArr = [];
     let unsortedArr = [];
     let lookup = {};
@@ -34,6 +47,6 @@ var relativeSortArray = function(arr1, arr2) {
     unsortedArr.sort((a, b) => a - b);
     sortedArr = sortedArr.concat(unsortedArr);
     return sortedArr;
-};
+};*/
 
 relativeSortArray([2,3,1,3,2,4,6,7,9,2,19], [2,1,4,3,9,6]); // [2,2,2,1,4,3,3,9,6,7,19]
